@@ -175,3 +175,12 @@ html.phone .rot { font-size: 22px; }
 @keyframes noteGlow { from { box-shadow: 0 0 6px #ffd36b, 0 4px 0 #d9a400; } to { box-shadow: 0 0 24px #ffd36b, 0 4px 0 #d9a400; } }
 html.phone .version-tag { font-size: 11px; padding: 2px 8px; }
 html.phone .update-note { font-size: 15px; padding: 7px 16px; }
+
+/* 非營利聲明 */
+.legal-tag {
+  position: absolute; right: max(12px, env(safe-area-inset-right)); bottom: max(10px, env(safe-area-inset-bottom));
+  background: rgba(255,255,255,.75); color: #4a2e2b; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 99px;
+}
+.pause-legal { position: static; background: none; color: rgba(255,255,255,.85); padding: 0; }
+html.phone .legal-tag { font-size: 10px; padding: 2px 8px; }
+html.phone .pause-legal { padding: 0; }

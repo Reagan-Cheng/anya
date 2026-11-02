@@ -1,5 +1,6 @@
 // 讓遊戲在 HTTPS 網址下可以離線遊玩：有網路時抓最新版，沒網路時用快取
 importScripts('version.js');
+// 發布版本 v1.1（改版時順手改這行，讓 iPad 一定偵測到 sw.js 有變動）
 const CACHE = 'anya-monster-' + self.ANYA_MONSTER_VERSION;
 const FILES = ['./', './index.html', './style.css', './anime-art.js', './draw.js', './game.js', './version.js', './manifest.webmanifest',
   './img/anime/frames.json',
