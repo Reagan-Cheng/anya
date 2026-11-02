@@ -161,3 +161,17 @@ html.phone .stars { font-size: 34px; }
 html.phone .score { font-size: 16px; }
 html.phone #pause .howto { font-size: 12px; padding: 6px 12px; line-height: 1.5; }
 html.phone .rot { font-size: 22px; }
+
+/* 版本號與新版提示 */
+.version-tag {
+  position: absolute; left: max(12px, env(safe-area-inset-left)); bottom: max(10px, env(safe-area-inset-bottom));
+  background: rgba(255,255,255,.85); color: #4a2e2b; font-size: 13px; font-weight: 800; padding: 3px 10px; border-radius: 99px;
+}
+.pause-ver { position: static; margin-top: 4px; }
+.update-note {
+  border: none; border-radius: 99px; padding: 10px 22px; font-size: 18px; font-weight: 900; color: #4a2e2b; cursor: pointer;
+  background: #ffe066; box-shadow: 0 4px 0 #d9a400; animation: noteGlow 1s infinite alternate;
+}
+@keyframes noteGlow { from { box-shadow: 0 0 6px #ffd36b, 0 4px 0 #d9a400; } to { box-shadow: 0 0 24px #ffd36b, 0 4px 0 #d9a400; } }
+html.phone .version-tag { font-size: 11px; padding: 2px 8px; }
+html.phone .update-note { font-size: 15px; padding: 7px 16px; }

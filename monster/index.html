@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="img/icon-180.png">
 <link rel="manifest" href="manifest.webmanifest">
 <title>安妮亞打怪獸</title>
-<link rel="stylesheet" href="style.css?v=20261101-phone">
+<link rel="stylesheet" href="style.css?v=20261101-ver">
 </head>
 <body>
 <canvas id="c"></canvas>
@@ -24,7 +24,9 @@
     <h1>安妮亞<br>打怪獸</h1>
   </div>
   <button id="btnStart" class="big-btn">開始遊戲</button>
+  <button id="updateNote" class="update-note hidden"></button>
   <p class="hint">建議把 iPad 橫放 · 電腦：方向鍵移動、空白鍵跳、Z 出拳、X 丟花生、C 超能力、P 暫停</p>
+  <div class="version-tag" id="verTitle"></div>
 </div>
 
 <div id="map" class="screen hidden">
@@ -69,6 +71,7 @@
     「花生」丟出花生 · 把壞人丟過來的東西用拳頭打回去！<br>
     打中壞人會集「超能力」，集滿就放心電感應波，還會叫家人來幫忙
   </div>
+  <div class="version-tag pause-ver" id="verPause"></div>
 </div>
 
 <div id="clear" class="screen dim hidden">
@@ -101,8 +104,9 @@
 
 <div id="rotate" class="screen hidden"><div class="rot">請把手機或 iPad 橫放來玩 ↻</div></div>
 
-<script src="anime-art.js?v=20261101-phone"></script>
-<script src="draw.js?v=20261101-phone"></script>
-<script src="game.js?v=20261101-phone"></script>
+<script src="version.js"></script>
+<script src="anime-art.js?v=20261101-ver"></script>
+<script src="draw.js?v=20261101-ver"></script>
+<script src="game.js?v=20261101-ver"></script>
 </body>
 </html>

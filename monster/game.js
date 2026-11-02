@@ -1598,7 +1598,32 @@ resize();
 setMuted(save.muted);
 showScreen('title');
 requestAnimationFrame(frame);
-if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});
+if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).catch(() => {});
+// ================= 版本號 =================
+// 版本號寫在 version.js。打開遊戲時去網站抓最新的 version.js，比自己新就提示更新
+const VERSION = self.ANYA_MONSTER_VERSION || '?';
+$('verTitle').textContent = `版本 v${VERSION}`;
+$('verPause').textContent = `版本 v${VERSION}（${self.ANYA_MONSTER_DATE || ''}）`;
+const verNum = (v) => String(v).split('.').map((n) => +n || 0).reduce((a, n) => a * 1000 + n, 0);
+function checkForUpdate() {
+  fetch('version.js?t=' + Date.now(), { cache: 'no-store' })
+    .then((r) => (r.ok ? r.text() : ''))
+    .then((txt) => {
+      const m = txt.match(/ANYA_MONSTER_VERSION\s*=\s*'([^']+)'/);
+      if (!m || verNum(m[1]) <= verNum(VERSION)) return;
+      const note = $('updateNote');
+      note.textContent = `🆕 有新版本 v${m[1]}，點這裡更新`;
+      note.classList.remove('hidden');
+      note.onclick = () => {
+        // 清掉舊的離線快取再重新載入
+        const clear = 'caches' in self ? caches.keys().then((ks) => Promise.all(ks.map((k) => caches.delete(k)))) : Promise.resolve();
+        clear.finally(() => location.reload());
+      };
+    })
+    .catch(() => {});
+}
+checkForUpdate();
+document.addEventListener('visibilitychange', () => { if (!document.hidden) checkForUpdate(); });
 // 測試用：用自訂事件快轉模擬（瀏覽器在背景時也能測），結果寫在 body 的 data-state
 addEventListener('debug-sim', (e) => {
   const d = e.detail || {};
